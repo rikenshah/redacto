@@ -58,6 +58,11 @@ class RedactionViewModel(
         }
     }
 
+    val availableVariants: List<ModelVariant> = ModelVariant.entries.filter { variant ->
+        val file = java.io.File(application.getExternalFilesDir(null), variant.fileName)
+        file.exists() && file.length() > 0
+    }
+
     private val _selectedMode = MutableStateFlow(RedactionMode.HIPAA)
     val selectedMode: StateFlow<RedactionMode> = _selectedMode.asStateFlow()
 
@@ -146,6 +151,9 @@ class RedactionViewModel(
         viewModelScope.launch {
             kotlinx.coroutines.withContext(kotlinx.coroutines.Dispatchers.IO) {
                 engine.close()
+                val cacheDir = getApplication<Application>().cacheDir
+                cacheDir.listFiles()?.forEach { it.delete() }
+                android.util.Log.i("RedactionViewModel", "Cleared cache before backend switch")
                 Thread.sleep(3000)
             }
             checkModelAndInitialize()

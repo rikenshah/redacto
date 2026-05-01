@@ -2,27 +2,20 @@ package com.example.starterhack
 
 import android.app.Application
 import android.util.Log
+import java.io.File
+import java.io.FileOutputStream
 
-/**
- * Set ADSP_LIBRARY_PATH and LD_LIBRARY_PATH before any LiteRT-LM / QNN library loads.
- *
- * The Hexagon DSP cdsp domain reads ADSP_LIBRARY_PATH **once at QnnHtp init** (which happens
- * transitively when libLiteRtDispatch_Qualcomm.so is dlopened). If we set it later inside
- * InferenceEngine.initialize(), QnnHtp has already captured an empty path and can't find
- * libQnnHtpV79Skel.so on this Samsung S25 Ultra (Samsung places it in /vendor/lib64/rfs/dsp/snap/,
- * which is not in FastRPC's hardcoded fallback list).
- */
 class ShieldTextApp : Application() {
     override fun onCreate() {
         super.onCreate()
         val nativeLibDir = applicationInfo.nativeLibraryDir
         val paths = listOf(
             nativeLibDir,
-            "/vendor/lib64/rfs/dsp/snap", // Samsung S25 Ultra Hexagon V79 skel
-            "/vendor/lib64/hw/audio",     // Samsung alternate skel location
+            "/vendor/lib64/rfs/dsp/snap",
+            "/vendor/lib64/hw/audio",
             "/vendor/dsp/cdsp",
             "/vendor/lib64",
-            "/vendor/lib64/snap",         // matches InferenceEngine.configureNativeRuntime()
+            "/vendor/lib64/snap",
             "/system/lib64",
         ).joinToString(":")
         runCatching {
@@ -30,5 +23,31 @@ class ShieldTextApp : Application() {
             android.system.Os.setenv("LD_LIBRARY_PATH", paths, true)
             Log.i("ShieldTextApp", "Pre-init ADSP_LIBRARY_PATH=$paths")
         }.onFailure { Log.w("ShieldTextApp", "Failed to seed DSP library paths: ${it.message}") }
+
+        extractBundledModels()
+    }
+
+    private fun extractBundledModels() {
+        val modelFiles = listOf("gemma4_npu.litertlm")
+        val destDir = getExternalFilesDir(null) ?: return
+
+        for (name in modelFiles) {
+            val destFile = File(destDir, name)
+            if (destFile.exists() && destFile.length() > 0) {
+                Log.i("ShieldTextApp", "Model already extracted: $name (${destFile.length()} bytes)")
+                continue
+            }
+            Log.i("ShieldTextApp", "Extracting bundled model: $name ...")
+            try {
+                assets.open(name).use { input ->
+                    FileOutputStream(destFile).use { output ->
+                        input.copyTo(output, bufferSize = 8 * 1024 * 1024)
+                    }
+                }
+                Log.i("ShieldTextApp", "Extracted $name: ${destFile.length()} bytes")
+            } catch (e: Throwable) {
+                Log.w("ShieldTextApp", "Failed to extract $name: ${e.message}")
+            }
+        }
     }
 }

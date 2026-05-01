@@ -327,6 +327,7 @@ private fun SuccessResultScreen(
                 modifier = Modifier.fillMaxWidth(),
                 selectedVariant = selectedVariant,
                 onSelectVariant = { viewModel.selectModelVariant(it) },
+                availableVariants = viewModel.availableVariants,
             )
 
             // Category-toggle bubbles

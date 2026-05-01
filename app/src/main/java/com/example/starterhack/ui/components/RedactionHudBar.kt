@@ -61,6 +61,7 @@ fun RedactionHudBar(
     timeToFirstTokenMs: Long = 0L,
     modifier: Modifier = Modifier,
     selectedVariant: ModelVariant? = null,
+    availableVariants: List<ModelVariant> = ModelVariant.entries,
     onSelectVariant: ((ModelVariant) -> Unit)? = null,
     isLive: Boolean = false,
 ) {
@@ -113,7 +114,7 @@ fun RedactionHudBar(
                 }
                 if (onSelectVariant != null) {
                     DropdownMenu(expanded = menuOpen, onDismissRequest = { menuOpen = false }) {
-                        ModelVariant.entries.forEach { v ->
+                        availableVariants.forEach { v ->
                             DropdownMenuItem(
                                 text = { Text(v.label) },
                                 trailingIcon = {

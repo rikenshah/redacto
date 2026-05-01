@@ -43,6 +43,9 @@ android {
         compose = true
         buildConfig = true
     }
+    androidResources {
+        noCompress += listOf("litertlm")
+    }
     packaging {
         jniLibs {
             // LiteRT dispatch does a filesystem readdir on applicationInfo.nativeLibraryDir to

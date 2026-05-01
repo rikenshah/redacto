@@ -144,6 +144,7 @@ fun HomeScreen(
                         backend = activeBackend,
                         selectedVariant = selectedVariant,
                         onSelectVariant = { redactionViewModel.selectModelVariant(it) },
+                        availableVariants = redactionViewModel.availableVariants,
                     )
                 },
             )

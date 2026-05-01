@@ -54,6 +54,7 @@ fun HudBox(
     backend: String = metrics?.backend ?: "CPU",
     selectedVariant: ModelVariant? = null,
     onSelectVariant: ((ModelVariant) -> Unit)? = null,
+    availableVariants: List<ModelVariant> = ModelVariant.entries,
 ) {
     val chipColor = when {
         backend.contains("NPU", ignoreCase = true) -> BackendNpu
@@ -107,7 +108,7 @@ fun HudBox(
                 }
                 if (onSelectVariant != null) {
                     DropdownMenu(expanded = menuOpen, onDismissRequest = { menuOpen = false }) {
-                        ModelVariant.entries.forEach { v ->
+                        availableVariants.forEach { v ->
                             DropdownMenuItem(
                                 text = { Text(v.label) },
                                 trailingIcon = {
