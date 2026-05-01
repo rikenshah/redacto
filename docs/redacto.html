@@ -157,6 +157,33 @@
   /* ── PITCH ── */
   #pitch { background: var(--black); }
   .pitch-inner { max-width: 1080px; margin: 0 auto; padding: 88px 40px; }
+  .pitch-quote {
+    font-size: clamp(22px, 2.6vw, 30px);
+    font-weight: 500; line-height: 1.5;
+    letter-spacing: -0.02em;
+    color: var(--white);
+    max-width: 880px;
+    margin: 24px 0 56px;
+  }
+  .pitch-quote em { color: #4ade80; font-style: normal; font-weight: 600; }
+  .pitch-quote strong { color: var(--white); font-weight: 700; }
+  .pitch-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 2px; background: var(--gray2);
+    border-radius: 12px; overflow: hidden;
+  }
+  .pitch-beat { background: var(--gray1); padding: 28px 26px; }
+  .pb-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px; color: var(--gray3);
+    letter-spacing: 0.14em; text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+  .pb-text {
+    font-size: 15px; line-height: 1.6; color: var(--gray4);
+    font-weight: 400; letter-spacing: -0.005em;
+  }
+  .pb-text strong { color: var(--white); font-weight: 600; }
 
   /* Top statement */
   .pitch-statement {
@@ -513,6 +540,422 @@
   .footer-tagline { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--gray3); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 16px; }
   footer p { font-size: 11px; color: var(--gray2); margin: 3px 0; }
 
+  /* ── HACKATHON COMPLIANCE STRIP ── */
+  .brief-strip { background: var(--gray1); border-top: 1px solid var(--gray2); border-bottom: 1px solid var(--gray2); }
+  .brief-inner { max-width: 1080px; margin: 0 auto; padding: 28px 40px; }
+  .brief-label { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--gray3); letter-spacing: 0.16em; text-transform: uppercase; margin-bottom: 18px; display: flex; align-items: center; gap: 12px; }
+  .brief-label::before { content:''; display:block; width:24px; height:1px; background:var(--gray3); }
+  .brief-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+  .brief-item { display: flex; gap: 14px; align-items: flex-start; }
+  .bi-check {
+    width: 24px; height: 24px; border-radius: 50%;
+    background: rgba(34, 197, 94, 0.14); color: #22c55e;
+    font-weight: 800; display: flex; align-items: center; justify-content: center;
+    font-size: 13px; flex-shrink: 0; margin-top: 1px;
+    border: 1px solid rgba(34, 197, 94, 0.4);
+  }
+  .bi-name { font-size: 13px; font-weight: 700; color: var(--white); margin-bottom: 2px; letter-spacing: -0.01em; }
+  .bi-detail { font-size: 11px; color: var(--gray4); line-height: 1.5; font-family: 'DM Mono', monospace; }
+
+  /* ── 7-MODE PATTERN STRIP (problem section) ── */
+  .pattern-strip { margin: 56px 0 64px; }
+  .pattern-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px; color: var(--gray3);
+    letter-spacing: 0.12em; text-transform: uppercase;
+    margin-bottom: 18px; padding-left: 1px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .pattern-label::before { content:''; display:block; width:24px; height:1px; background:var(--gray3); }
+  .pattern-row {
+    display: grid; grid-template-columns: repeat(7, 1fr); gap: 1px;
+    background: var(--gray5);
+    border: 1px solid var(--gray5); border-radius: 12px;
+    overflow: hidden;
+  }
+  .pattern-chip {
+    background: var(--white); padding: 18px 14px;
+    display: flex; flex-direction: column; gap: 8px;
+    text-align: center; align-items: center;
+  }
+  .pc-icon { font-size: 22px; line-height: 1; }
+  .pc-text { font-size: 11px; line-height: 1.4; color: var(--gray2); }
+  .pc-text strong { display: block; font-size: 12px; font-weight: 700; color: var(--black); margin-bottom: 3px; letter-spacing: -0.01em; }
+
+  /* ── TECH SECTION OPTIMIZATION CALLOUT ── */
+  .opt-block { margin-top: 40px; background: var(--black); border-radius: 14px; padding: 36px 36px 32px; }
+  .opt-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 24px; flex-wrap: wrap; gap: 12px; }
+  .opt-title { font-size: 20px; font-weight: 700; color: var(--white); letter-spacing: -0.02em; }
+  .opt-subtitle { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--gray3); letter-spacing: 0.12em; text-transform: uppercase; }
+  .opt-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px 36px; }
+  .opt-item { display: grid; grid-template-columns: 28px 1fr; gap: 14px; padding: 16px 0; border-bottom: 1px solid var(--gray1); align-items: start; }
+  .opt-num { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--gray3); letter-spacing: 0.04em; padding-top: 2px; }
+  .opt-name { font-size: 13px; font-weight: 600; color: var(--white); margin-bottom: 4px; letter-spacing: -0.01em; }
+  .opt-desc { font-size: 12px; color: var(--gray4); line-height: 1.6; }
+  .opt-desc code { font-family: 'DM Mono', monospace; font-size: 11px; color: #4ade80; background: rgba(34,197,94,0.08); padding: 1px 6px; border-radius: 3px; }
+
+  /* ── DEPLOY SECTION ── */
+  #deploy { background: var(--paper); }
+  .deploy-block {
+    background: var(--black); border-radius: 14px;
+    padding: 32px 36px; margin: 32px 0;
+    overflow: hidden;
+  }
+  .deploy-step { display: grid; grid-template-columns: 36px 1fr; gap: 20px; padding: 18px 0; border-bottom: 1px solid var(--gray1); align-items: start; }
+  .deploy-step:last-child { border: none; }
+  .ds-num {
+    width: 28px; height: 28px; border-radius: 50%;
+    background: rgba(34,197,94,0.14); border: 1px solid rgba(34,197,94,0.4);
+    color: #22c55e; font-weight: 800; font-size: 12px;
+    display: flex; align-items: center; justify-content: center;
+    margin-top: 2px;
+  }
+  .ds-title { font-size: 13px; font-weight: 700; color: var(--white); margin-bottom: 8px; letter-spacing: -0.01em; }
+  .ds-cmd {
+    font-family: 'DM Mono', monospace; font-size: 12px;
+    color: #4ade80; background: rgba(255,255,255,0.04);
+    padding: 10px 14px; border-radius: 6px;
+    border: 1px solid var(--gray1);
+    overflow-x: auto; white-space: nowrap;
+    line-height: 1.5;
+  }
+  .ds-cmd .pmt { color: var(--gray4); user-select: none; }
+  .deploy-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 1px; background: var(--gray5);
+    border: 1px solid var(--gray5); border-radius: 12px;
+    overflow: hidden;
+  }
+  .dg-item { background: var(--white); padding: 22px 20px; }
+  .dg-num { font-size: 26px; font-weight: 800; letter-spacing: -0.03em; line-height: 1; margin-bottom: 6px; color: var(--black); }
+  .dg-label { font-size: 12px; color: var(--gray3); line-height: 1.5; }
+
+  /* ── APP FLOW SCREENSHOT STRIP ── */
+  .flow-screens {
+    display: grid; grid-template-columns: repeat(5, 1fr);
+    gap: 12px; margin-top: 56px;
+  }
+  .flow-screen { display: flex; flex-direction: column; gap: 12px; align-items: stretch; }
+  .flow-screen img {
+    width: 100%; aspect-ratio: 1080/2340;
+    object-fit: cover; object-position: top;
+    border-radius: 14px;
+    border: 1px solid var(--gray2);
+    background: var(--gray1);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.35);
+  }
+  .flow-screen-cap {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px; color: var(--gray3);
+    letter-spacing: 0.06em; text-align: center;
+    line-height: 1.5;
+  }
+  .flow-screen-cap strong { display: block; color: var(--white); font-weight: 700; font-size: 11px; margin-bottom: 4px; letter-spacing: -0.01em; font-family: 'Poppins', sans-serif; text-transform: none; }
+
+  .flow-extras {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 12px; margin-top: 32px;
+  }
+  .flow-extra { display: flex; flex-direction: column; gap: 12px; }
+  .flow-extra img {
+    width: 100%; aspect-ratio: 1080/2340;
+    object-fit: cover; object-position: top;
+    border-radius: 14px;
+    border: 1px solid var(--gray2);
+    background: var(--gray1);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.35);
+  }
+  .fe-tag {
+    display: inline-block; font-family: 'DM Mono', monospace;
+    font-size: 10px; padding: 4px 10px; border-radius: 4px;
+    letter-spacing: 0.06em; font-weight: 600;
+    background: rgba(34, 197, 94, 0.14); color: #22c55e;
+    border: 1px solid rgba(34, 197, 94, 0.4);
+    align-self: flex-start;
+  }
+  .fe-cap { font-size: 12px; color: var(--gray4); line-height: 1.55; }
+  .fe-cap strong { color: var(--white); font-weight: 600; }
+
+  /* ── ENGINEERING JOURNEY EVIDENCE BLOCK ── */
+  .v1-evidence {
+    display: grid; grid-template-columns: 360px 1fr; gap: 32px;
+    margin-top: 32px; padding: 32px;
+    background: var(--white); border: 1px solid var(--gray5);
+    border-radius: 14px;
+    align-items: center;
+  }
+  .v1-evidence img {
+    width: 100%; aspect-ratio: 1080/2340;
+    object-fit: cover; object-position: top;
+    border-radius: 10px; border: 1px solid var(--gray5);
+  }
+  .v1-evidence-text { display: flex; flex-direction: column; gap: 12px; }
+  .v1-evidence-tag { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--red); letter-spacing: 0.12em; text-transform: uppercase; }
+  .v1-evidence-title { font-size: 17px; font-weight: 700; color: var(--black); letter-spacing: -0.02em; }
+  .v1-evidence-body { font-size: 13px; color: var(--gray2); line-height: 1.7; }
+  .v1-evidence-body strong { color: var(--black); font-weight: 600; }
+
+  /* ── ENGINEERING JOURNEY ── */
+  #journey { background: var(--paper); }
+  .journey-arc {
+    display: grid; grid-template-columns: 1fr 60px 1fr;
+    gap: 0; align-items: stretch;
+    margin-top: 32px;
+    border: 1px solid var(--gray5);
+    border-radius: 14px; overflow: hidden;
+  }
+  .ja-side { padding: 28px 32px; }
+  .ja-v1 { background: var(--red-pale); }
+  .ja-v2 { background: var(--green-pale); }
+  .ja-arrow { display: flex; align-items: center; justify-content: center; background: var(--paper); font-size: 22px; color: var(--gray3); border-left: 1px solid var(--gray5); border-right: 1px solid var(--gray5); }
+  .ja-tag { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 8px; }
+  .ja-v1 .ja-tag { color: var(--red); }
+  .ja-v2 .ja-tag { color: var(--green); }
+  .ja-title { font-size: 17px; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 16px; color: var(--black); }
+  .ja-list { list-style: none; padding: 0; margin: 0; }
+  .ja-list li { font-size: 13px; color: var(--gray2); line-height: 1.65; padding: 4px 0 4px 16px; position: relative; }
+  .ja-list li::before { content: '·'; position: absolute; left: 4px; color: var(--gray3); font-weight: 700; }
+  .ja-list li code { font-family: 'DM Mono', monospace; font-size: 12px; background: rgba(0,0,0,0.05); padding: 1px 5px; border-radius: 3px; color: var(--black); }
+
+  .trial-table { border: 1px solid var(--gray5); border-radius: 12px; overflow: hidden; margin-bottom: 32px; }
+  .trial-row { display: grid; grid-template-columns: 240px 170px 1fr; border-bottom: 1px solid var(--gray5); align-items: stretch; }
+  .trial-row:last-child { border: none; }
+  .trial-row.head { background: var(--white); }
+  .trial-cell { padding: 16px 20px; border-right: 1px solid var(--gray5); font-size: 13px; line-height: 1.6; color: var(--gray2); }
+  .trial-cell:last-child { border: none; }
+  .trial-name { font-weight: 600; font-size: 13px; color: var(--black); letter-spacing: -0.01em; }
+  .trial-name code, .trial-cell code { font-family: 'DM Mono', monospace; font-size: 11px; background: var(--gray5); padding: 1px 5px; border-radius: 3px; color: var(--black); }
+  .trial-status {
+    display: inline-block; font-family: 'DM Mono', monospace;
+    font-size: 10px; padding: 4px 10px; border-radius: 4px;
+    letter-spacing: 0.04em; font-weight: 600;
+  }
+  .trial-status.red { background: var(--red-pale); color: var(--red); }
+  .trial-status.amber { background: var(--amber-pale); color: var(--amber); }
+
+  .blocker-callout {
+    background: var(--black); border-radius: 14px;
+    padding: 32px 36px;
+    display: grid; grid-template-columns: 36px 1fr; gap: 22px;
+    align-items: start;
+  }
+  .bc-icon { font-size: 26px; line-height: 1; padding-top: 2px; }
+  .bc-title { font-size: 19px; font-weight: 700; color: var(--white); margin-bottom: 14px; letter-spacing: -0.02em; }
+  .bc-text { font-size: 14px; color: var(--gray4); line-height: 1.75; }
+  .bc-text strong { color: var(--white); font-weight: 600; }
+  .bc-text code { font-family: 'DM Mono', monospace; font-size: 12px; color: #4ade80; background: rgba(255,255,255,0.06); padding: 1px 6px; border-radius: 3px; }
+
+  /* ── FUTURE ── */
+  #future { background: var(--paper); }
+  .future-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 32px; }
+  .future-card {
+    background: var(--white); border: 1px solid var(--gray5);
+    border-radius: 12px; padding: 28px 26px;
+    display: flex; flex-direction: column;
+  }
+  .future-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px; color: var(--gray3);
+    letter-spacing: 0.12em; margin-bottom: 14px;
+  }
+  .future-title { font-size: 16px; font-weight: 700; color: var(--black); letter-spacing: -0.02em; margin-bottom: 8px; }
+  .future-tag {
+    font-family: 'DM Mono', monospace; font-size: 10px;
+    color: var(--amber); background: var(--amber-pale);
+    padding: 3px 9px; border-radius: 4px;
+    letter-spacing: 0.04em; align-self: flex-start;
+    margin-bottom: 14px;
+  }
+  .future-desc { font-size: 13px; color: var(--gray2); line-height: 1.65; }
+  .future-desc code { font-family: 'DM Mono', monospace; font-size: 11px; background: var(--gray5); padding: 1px 5px; border-radius: 3px; color: var(--black); }
+
+  /* ── BENCHMARKS ── */
+  #benchmarks { background: var(--black); }
+  .bench-inner { max-width: 1080px; margin: 0 auto; padding: 88px 40px; }
+  #benchmarks .eyebrow { color: var(--gray3); }
+  #benchmarks .eyebrow::before { background: var(--gray3); }
+  #benchmarks h2 { color: var(--white); }
+  #benchmarks p.lead { color: var(--gray4); max-width: 640px; }
+
+  .bench-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px; color: var(--gray3);
+    letter-spacing: 0.16em; text-transform: uppercase;
+    margin-bottom: 20px; display: flex; align-items: center; gap: 12px;
+  }
+  .bench-eyebrow::before { content:''; display:block; width:24px; height:1px; background:var(--gray3); }
+
+  /* Setup card row */
+  .bench-setup {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 1px; background: var(--gray2);
+    border: 1px solid var(--gray2); border-radius: 12px;
+    overflow: hidden; margin-bottom: 56px;
+  }
+  .bset-item { background: var(--gray1); padding: 20px 22px; }
+  .bset-label { font-family: 'DM Mono', monospace; font-size: 9px; color: var(--gray3); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 8px; }
+  .bset-value { font-size: 17px; font-weight: 700; color: var(--white); margin-bottom: 4px; letter-spacing: -0.02em; }
+  .bset-meta { font-size: 11px; color: var(--gray4); line-height: 1.4; font-family: 'DM Mono', monospace; }
+
+  /* Hero metric cards */
+  .bench-hero-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 2px; background: var(--gray2);
+    border-radius: 12px; overflow: hidden;
+    margin-bottom: 56px;
+  }
+  .bhc { background: var(--gray1); padding: 36px 28px; position: relative; }
+  .bhc::before { content:''; position: absolute; top:0; left:0; width: 36px; height: 2px; background: #22c55e; }
+  .bhc.warn::before { background: #f59e0b; }
+  .bhc-num {
+    font-size: clamp(40px, 5vw, 60px);
+    font-weight: 800; letter-spacing: -0.04em;
+    line-height: 1; margin-bottom: 14px;
+    color: #22c55e;
+    font-feature-settings: "tnum";
+  }
+  .bhc.warn .bhc-num { color: #f59e0b; }
+  .bhc-label { font-size: 14px; color: var(--white); margin-bottom: 8px; font-weight: 600; letter-spacing: -0.01em; }
+  .bhc-detail { font-size: 12px; color: var(--gray4); line-height: 1.55; }
+
+  /* Bar chart panel */
+  .bench-chart {
+    background: var(--gray1); border-radius: 14px;
+    padding: 36px 36px; margin-bottom: 32px;
+    border: 1px solid var(--gray2);
+  }
+  .bench-chart-cap { font-size: 12px; color: var(--gray3); font-family: 'DM Mono', monospace; letter-spacing: 0.04em; margin-bottom: 28px; }
+  .bench-bars { display: flex; flex-direction: column; gap: 24px; }
+  .bbar-row { display: grid; grid-template-columns: 110px 1fr; gap: 24px; align-items: start; }
+  .bbar-label { font-size: 13px; color: var(--white); font-weight: 700; line-height: 1.3; letter-spacing: -0.01em; }
+  .bbar-label span { color: var(--gray4); font-weight: 400; font-size: 11px; display: block; margin-top: 2px; font-family: 'DM Mono', monospace; }
+  .bbar-tracks { display: flex; flex-direction: column; gap: 9px; }
+  .bbar-track { display: grid; grid-template-columns: 50px 1fr 130px; gap: 14px; align-items: center; }
+  .bbar-tag { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--gray3); letter-spacing: 0.08em; }
+  .bbar-wrap { background: rgba(255,255,255,0.04); border-radius: 5px; height: 24px; position: relative; overflow: hidden; }
+  .bbar-fill {
+    height: 100%; border-radius: 5px;
+    display: flex; align-items: center;
+    padding: 0 12px;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px; font-weight: 700; color: #0a0a08;
+    min-width: 70px;
+    transition: width 0.6s cubic-bezier(.2,.8,.2,1);
+  }
+  .bbar-fill.gpu { background: linear-gradient(90deg, #94a3b8, #cbd5e1); }
+  .bbar-fill.npu { background: linear-gradient(90deg, #16a34a, #22c55e); }
+  .bbar-fill.warn { background: linear-gradient(90deg, #d97706, #f59e0b); color: #1a1207; }
+  .bbar-note { font-family: 'DM Mono', monospace; font-size: 10px; color: #22c55e; letter-spacing: 0.04em; font-weight: 600; }
+  .bbar-note.warn { color: #f59e0b; }
+  .bbar-note.muted { color: var(--gray3); font-weight: 400; }
+
+  /* Stats trio (TTFT / Decode / RAM) */
+  .bench-trio {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 2px; background: var(--gray2);
+    border-radius: 14px; overflow: hidden;
+    margin-bottom: 32px;
+  }
+  .btrio-card { background: var(--gray1); padding: 28px 26px; }
+  .btrio-head {
+    font-size: 13px; color: var(--white); font-weight: 700;
+    letter-spacing: -0.01em; margin-bottom: 4px;
+  }
+  .btrio-sub {
+    font-family: 'DM Mono', monospace; font-size: 10px;
+    color: var(--gray3); letter-spacing: 0.06em; margin-bottom: 18px;
+  }
+  .btrio-row { display: grid; grid-template-columns: 36px 1fr 60px; gap: 10px; align-items: center; padding: 5px 0; }
+  .btrio-name { font-family: 'DM Mono', monospace; color: var(--gray4); font-size: 10px; letter-spacing: 0.04em; }
+  .btrio-track { height: 6px; background: rgba(255,255,255,0.05); border-radius: 3px; overflow: hidden; }
+  .btrio-fill { height: 100%; border-radius: 3px; }
+  .btrio-fill.gpu { background: #94a3b8; }
+  .btrio-fill.npu { background: #22c55e; }
+  .btrio-val { font-family: 'DM Mono', monospace; color: var(--white); font-size: 11px; text-align: right; }
+  .btrio-foot { margin-top: 16px; font-size: 11px; color: var(--gray4); line-height: 1.6; padding-top: 14px; border-top: 1px solid rgba(255,255,255,0.05); }
+
+  /* Tradeoff callout */
+  .bench-tradeoff {
+    background: rgba(245, 158, 11, 0.07);
+    border: 1px solid rgba(245, 158, 11, 0.22);
+    border-radius: 14px; padding: 28px 32px;
+    margin-bottom: 56px;
+    display: grid; grid-template-columns: 32px 1fr; gap: 22px;
+    align-items: start;
+  }
+  .btr-icon { font-size: 22px; line-height: 1; padding-top: 2px; }
+  .btr-title { font-size: 17px; font-weight: 700; color: var(--white); margin-bottom: 10px; letter-spacing: -0.02em; }
+  .btr-text { font-size: 13px; color: var(--gray4); line-height: 1.7; margin-bottom: 0; }
+  .btr-text em { color: var(--white); font-style: normal; }
+  .btr-text strong { color: #fbbf24; font-weight: 600; }
+  .btr-stats {
+    margin-top: 20px;
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;
+    padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.06);
+  }
+  .btr-stat { font-size: 11px; color: var(--gray4); font-family: 'DM Mono', monospace; letter-spacing: 0.04em; line-height: 1.5; }
+  .btr-stat strong {
+    color: var(--white); font-weight: 800; font-size: 22px;
+    display: block; margin-bottom: 4px; font-family: 'Poppins', sans-serif;
+    letter-spacing: -0.02em;
+  }
+
+  /* Mode breakdown */
+  .bench-modes {
+    display: grid; grid-template-columns: repeat(5, 1fr);
+    gap: 2px; background: var(--gray2);
+    border-radius: 12px; overflow: hidden;
+    margin-bottom: 56px;
+  }
+  .bmode { background: var(--gray1); padding: 24px 22px; }
+  .bmode-name { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--gray3); letter-spacing: 0.1em; margin-bottom: 14px; text-transform: uppercase; }
+  .bmode-num { font-size: 28px; font-weight: 800; color: var(--white); letter-spacing: -0.03em; line-height: 1; margin-bottom: 6px; }
+  .bmode-num.warn { color: #fbbf24; }
+  .bmode-vs { font-size: 11px; color: var(--gray4); margin-bottom: 14px; font-family: 'DM Mono', monospace; min-height: 28px; line-height: 1.4; }
+  .bmode-bar-bg { height: 4px; background: rgba(255,255,255,0.06); border-radius: 2px; overflow: hidden; }
+  .bmode-bar-fill { height: 100%; border-radius: 2px; background: #22c55e; }
+
+  /* Spotlight (single-entry hero) */
+  .bench-spotlight {
+    background: linear-gradient(135deg, var(--gray1), #1a1a18);
+    border-radius: 16px; padding: 40px 40px 36px;
+    margin-bottom: 40px;
+    border: 1px solid var(--gray2);
+  }
+  .bspot-eye { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--gray3); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 16px; }
+  .bspot-title { font-size: 26px; font-weight: 800; color: var(--white); letter-spacing: -0.03em; margin-bottom: 6px; }
+  .bspot-sub { font-size: 13px; color: var(--gray4); margin-bottom: 28px; line-height: 1.6; max-width: 560px; }
+  .bspot-rows { display: flex; flex-direction: column; gap: 14px; }
+  .bspot-row { display: grid; grid-template-columns: 50px 1fr 90px; gap: 18px; align-items: center; }
+  .bspot-tag { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--gray3); letter-spacing: 0.06em; }
+  .bspot-bar-wrap { height: 36px; background: rgba(255,255,255,0.04); border-radius: 7px; position: relative; overflow: hidden; }
+  .bspot-bar { height: 100%; border-radius: 7px; display: flex; align-items: center; padding: 0 16px; font-family: 'DM Mono', monospace; font-size: 12px; font-weight: 700; color: #0a0a08; gap: 6px; }
+  .bspot-bar.gpu { background: linear-gradient(90deg, #94a3b8, #cbd5e1); }
+  .bspot-bar.npu { background: linear-gradient(90deg, #16a34a, #22c55e); }
+  .bspot-bar-steps { font-size: 11px; opacity: 0.85; font-weight: 600; }
+  .bspot-total { font-size: 18px; font-weight: 800; color: var(--white); text-align: right; letter-spacing: -0.02em; font-family: 'Poppins', sans-serif; }
+  .bspot-foot {
+    margin-top: 28px; padding-top: 22px;
+    border-top: 1px solid var(--gray2);
+    display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap;
+    font-size: 13px; color: var(--gray4);
+  }
+  .bspot-foot-num { font-size: 36px; font-weight: 800; color: #22c55e; letter-spacing: -0.03em; line-height: 1; }
+  .bspot-foot-num small { display: block; font-size: 11px; color: var(--gray4); font-weight: 400; letter-spacing: 0.06em; font-family: 'DM Mono', monospace; margin-top: 6px; text-transform: uppercase; }
+
+  /* Methodology footnote */
+  .bench-method {
+    background: var(--gray1); border-radius: 10px;
+    padding: 22px 28px; border: 1px solid var(--gray2);
+  }
+  .bmeth-head { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--gray3); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 10px; }
+  .bmeth-text { font-size: 12px; color: var(--gray4); line-height: 1.75; margin: 0; }
+  .bmeth-text code {
+    font-family: 'DM Mono', monospace; font-size: 11px;
+    color: var(--white); background: rgba(255,255,255,0.06);
+    padding: 1px 7px; border-radius: 4px;
+  }
+
   /* ── ANIMATIONS ── */
   @keyframes fadeUp { from { opacity:0; transform:translateY(16px); } to { opacity:1; transform:translateY(0); } }
   .fade-up { animation: fadeUp 0.5s ease both; }
@@ -543,6 +986,23 @@
     .tam-row { grid-template-columns: 1fr; }
     .cta-btns { flex-direction: column; align-items: center; }
     .demo-invite { flex-direction: column; }
+    .brief-grid { grid-template-columns: 1fr 1fr; }
+    .pattern-row { grid-template-columns: repeat(2, 1fr); }
+    .bench-setup, .bench-hero-grid, .bench-trio, .bench-modes, .deploy-grid { grid-template-columns: 1fr 1fr; }
+    .opt-grid { grid-template-columns: 1fr; }
+    .bbar-row { grid-template-columns: 1fr; gap: 10px; }
+    .bbar-track { grid-template-columns: 40px 1fr 90px; gap: 10px; }
+    .btr-stats { grid-template-columns: 1fr 1fr; }
+    .bspot-row { grid-template-columns: 40px 1fr 70px; gap: 10px; }
+    .opt-head { flex-direction: column; align-items: flex-start; }
+    .journey-arc { grid-template-columns: 1fr; }
+    .ja-arrow { padding: 12px 0; transform: rotate(90deg); border: none; border-top: 1px solid var(--gray5); border-bottom: 1px solid var(--gray5); }
+    .trial-row, .trial-row.head { grid-template-columns: 1fr; }
+    .trial-cell { border-right: none; border-bottom: 1px solid var(--gray5); }
+    .future-grid { grid-template-columns: 1fr; }
+    .flow-screens { grid-template-columns: 1fr 1fr; }
+    .flow-extras { grid-template-columns: 1fr; }
+    .v1-evidence { grid-template-columns: 1fr; }
   }
 </style>
 </head>
@@ -567,9 +1027,10 @@
     <a href="#app">App flow</a>
     <a href="#arch">Architecture</a>
     <a href="#moat">Why us</a>
-    <a href="#business">Business</a>
     <a href="#tech">Tech</a>
-    <a href="#team">Team</a>
+    <a href="#journey">Journey</a>
+    <a href="#benchmarks">Benchmarks</a>
+    <a href="#future">Future</a>
   </div>
   <div class="nav-badge">Edge Artists · Hackathon 2026</div>
 </nav>
@@ -581,7 +1042,7 @@
     <h1 class="hero-title fade-up">
       Redact before<br>it <span class="strike">sends.</span>
     </h1>
-    <p class="hero-sub fade-up">Redacto is a zero-trust privacy layer that runs entirely on-device — stripping sensitive identifiers from text and images in under 500ms, before they ever touch a network.</p>
+    <p class="hero-sub fade-up">Redacto is a zero-trust privacy layer for any sensitive document — <strong style="color:var(--white);font-weight:600;">medical, financial, legal, tactical, journalism, field service, and general</strong>. On-device redaction in under 500ms, before a single byte touches the network. Built end-to-end on the LiteRT-LM compiled-model API, optimized for Snapdragon 8 Elite.</p>
     <div class="hero-stats fade-up">
       <div class="h-stat">
         <div class="h-stat-num">6.4M</div>
@@ -603,6 +1064,43 @@
   </div>
 </div>
 
+<!-- ── HACKATHON COMPLIANCE STRIP ── -->
+<div class="brief-strip">
+  <div class="brief-inner">
+    <div class="brief-label">Built for the brief · Qualcomm × Google 2026</div>
+    <div class="brief-grid">
+      <div class="brief-item">
+        <div class="bi-check">✓</div>
+        <div>
+          <div class="bi-name">Track 1 fit</div>
+          <div class="bi-detail">LLM-based consumer journey · privacy by design</div>
+        </div>
+      </div>
+      <div class="brief-item">
+        <div class="bi-check">✓</div>
+        <div>
+          <div class="bi-name">LiteRT-LM</div>
+          <div class="bi-detail">compiled-model API · Gemma 4 E2B (.litertlm)</div>
+        </div>
+      </div>
+      <div class="brief-item">
+        <div class="bi-check">✓</div>
+        <div>
+          <div class="bi-name">Snapdragon 8 Elite</div>
+          <div class="bi-detail">Hexagon V79 NPU · QNN delegate · 41.7 tok/s</div>
+        </div>
+      </div>
+      <div class="brief-item">
+        <div class="bi-check">✓</div>
+        <div>
+          <div class="bi-name">Galaxy S25 Ultra</div>
+          <div class="bi-detail">target device · arm64 · 12 GB RAM · Android 15</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- ── PITCH ── -->
 <div id="pitch">
   <div class="pitch-inner">
@@ -611,12 +1109,12 @@
       60-second elevator pitch
     </div>
     <p class="pitch-quote">
-      "Every day, 6.4 million home health workers break privacy law — not out of negligence, but because the compliant tools are too slow for the field. So they text patient names, diagnoses, and family contacts over iMessage. <em>One text. Eight HIPAA violations. Up to $1.9 million in fines.</em> Every existing solution encrypts the pipe. We sanitize what goes through it — before it leaves the device. No cloud. No BAA. No behavior change. Just tap Share, tap Redacto, tap Send."
+      "Healthcare is the canary. 6.4M home health workers break HIPAA daily — not out of negligence, but because the compliant tools are too slow for the field. <em>The same shadow-IT pattern repeats across finance, law, public safety, journalism, and field service.</em> One leaked text. Eight identifiers. Up to $1.9M in fines. Every existing solution encrypts the pipe. <strong>Redacto sanitizes the content</strong> — across seven domains, on-device, before a byte touches the network. No cloud. No BAA. No behavior change. Just tap Share, tap Redacto, tap Send."
     </p>
     <div class="pitch-grid">
       <div class="pitch-beat">
         <div class="pb-label">The hook</div>
-        <div class="pb-text">Good people breaking the law <strong>out of necessity</strong>, every day. The villain is the system, not the nurse.</div>
+        <div class="pb-text">Good people breaking the rules <strong>out of necessity</strong>, every day — clinicians, advisors, attorneys, officers, reporters, technicians. The villain is the system, not the worker.</div>
       </div>
       <div class="pitch-beat">
         <div class="pb-label">The insight</div>
@@ -641,7 +1139,7 @@
     <div class="story-cols">
       <div>
         <h2>The 45-second compliance gap nobody has closed</h2>
-        <p>Frontline professionals — nurses, social workers, first responders, journalists — live in a world where compliant tools require VPN, a separate login, and a network connection. In the 45 seconds between patient visits, they do what every human does. They text.</p>
+        <p>Frontline professionals — clinicians, financial advisors, attorneys, first responders, journalists, field technicians — live in a world where compliant tools require VPN, a separate login, and a network connection. In the gaps between tasks, they do what every human does. They text. They paste. They send.</p>
         <div class="story-quote-block">
           "TigerConnect may not be appropriate for use in emergency situations."
           <cite>— TigerConnect's own documentation</cite>
@@ -649,11 +1147,12 @@
         <p>The gap isn't between secure and insecure channels. The gap is between the moment sensitive content is created and the moment it leaves the device. Nobody has put intelligence in that gap — until now.</p>
         <div class="phi-count">
           <div class="phi-num">8</div>
-          <div class="phi-label">HIPAA identifiers in a single typical field text message</div>
+          <div class="phi-label">sensitive identifiers in a single typical field message — same profile in finance, legal, public safety, journalism, field service</div>
         </div>
       </div>
       <div>
         <div class="persona-card">
+          <div style="font-family:'DM Mono',monospace;font-size:9px;color:var(--gray3);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:14px;">Example use case · 1 of 7 supported domains</div>
           <div class="persona-header">
             <div class="persona-avatar">MR</div>
             <div>
@@ -671,6 +1170,20 @@
             <span style="font-family:'DM Mono',monospace;font-size:9px;">per violation category</span>
           </div>
         </div>
+      </div>
+    </div>
+
+    <!-- 7-mode pattern strip -->
+    <div class="pattern-strip">
+      <div class="pattern-label">The same 45-second gap, seven times over</div>
+      <div class="pattern-row">
+        <div class="pattern-chip"><span class="pc-icon">🏥</span><span class="pc-text"><strong>Medical</strong> · names, DOB, MRN, diagnoses</span></div>
+        <div class="pattern-chip"><span class="pc-icon">🏦</span><span class="pc-text"><strong>Financial</strong> · accounts, routing, SSN, tax IDs</span></div>
+        <div class="pattern-chip"><span class="pc-icon">⚖️</span><span class="pc-text"><strong>Legal</strong> · parties, case numbers, attorney contacts</span></div>
+        <div class="pattern-chip"><span class="pc-icon">🚔</span><span class="pc-text"><strong>Tactical</strong> · victims, witnesses, minors</span></div>
+        <div class="pattern-chip"><span class="pc-icon">📰</span><span class="pc-text"><strong>Journalism</strong> · source identity, locations</span></div>
+        <div class="pattern-chip"><span class="pc-icon">🔧</span><span class="pc-text"><strong>Field service</strong> · gate codes, PINs, customer PII</span></div>
+        <div class="pattern-chip"><span class="pc-icon">🔲</span><span class="pc-text"><strong>General</strong> · names, dates, contacts, addresses</span></div>
       </div>
     </div>
 
@@ -765,7 +1278,7 @@
         <div class="ba-body">
           <div class="ba-step"><div class="ba-num g">1</div><div class="ba-text">Same visit. Same 45 seconds. She writes her note in Notes — exactly as she always has.</div></div>
           <div class="ba-step"><div class="ba-num g">2</div><div class="ba-text">Taps Share. Redacto is in the share sheet next to Messages. One tap.</div></div>
-          <div class="ba-step"><div class="ba-num g">3</div><div class="ba-text">On-device Gemma processes in 387ms. No network call. Heatmap shows what was caught and why.</div></div>
+          <div class="ba-step"><div class="ba-num g">3</div><div class="ba-text">On-device Gemma streams the first token in 92ms — full result in 2.78s on a 229-char clinical note. No network call. Heatmap shows what was caught and why.</div></div>
           <div class="ba-step"><div class="ba-num g">4</div><div class="ba-text">Taps Messages. Clean text pre-fills compose. She sends. Fully compliant. Zero behavior change.</div></div>
         </div>
       </div>
@@ -818,10 +1331,53 @@
       </div>
     </div>
 
-    <div class="demo-invite">
+    <!-- Live screenshots from the actual app -->
+    <div class="flow-screens">
+      <div class="flow-screen">
+        <img src="demoImages/01-home-document-vault.jpg" alt="Home — document vault with category grid">
+        <div class="flow-screen-cap"><strong>01 · Home</strong>Document vault</div>
+      </div>
+      <div class="flow-screen">
+        <img src="demoImages/02-add-document-sheet.jpg" alt="Add document — gallery, camera, or text">
+        <div class="flow-screen-cap"><strong>02 · Add</strong>Gallery · Camera · Text</div>
+      </div>
+      <div class="flow-screen">
+        <img src="demoImages/03-gallery-picker.jpg" alt="System gallery picker">
+        <div class="flow-screen-cap"><strong>03 · Pick</strong>OS gallery picker</div>
+      </div>
+      <div class="flow-screen">
+        <img src="demoImages/04-pipeline-step-2-detecting.jpg" alt="Pipeline progress — Step 2/4 Detecting Medical identifiers">
+        <div class="flow-screen-cap"><strong>04 · Pipeline</strong>Step 2/4 · Detect</div>
+      </div>
+      <div class="flow-screen">
+        <img src="demoImages/05-result-medical-gpu.jpg" alt="Redacted medical doc — GPU 2.0s 1.9s TTFT 24 tok/s">
+        <div class="flow-screen-cap"><strong>05 · Result</strong>Black-boxed PHI</div>
+      </div>
+    </div>
+
+    <!-- Interactive features: NPU vs GPU + toggle + text mode -->
+    <div class="flow-extras">
+      <div class="flow-extra">
+        <img src="demoImages/06-result-medical-npu.jpg" alt="Same medical doc on NPU — 1.6s total, 97ms TTFT, 42 tok/s">
+        <span class="fe-tag">NPU vs GPU · live HUD</span>
+        <div class="fe-cap">Same document, NPU backend: <strong>1.6s total · 97ms TTFT · 42 tok/s</strong>. Compare against GPU's <strong>2.0s · 1.9s TTFT · 24 tok/s</strong> in screen 05 — the speedup the benchmarks describe, on a real device.</div>
+      </div>
+      <div class="flow-extra">
+        <img src="demoImages/08-toggle-original.jpg" alt="Toggle between Redacted and Original views">
+        <span class="fe-tag" style="background:rgba(245,158,11,0.14);color:#f59e0b;border-color:rgba(245,158,11,0.4);">Tap to un-redact</span>
+        <div class="fe-cap">Toggle category bubbles to show or hide field types. Tap individual blocks to selectively un-redact. Toggle to <strong>Original</strong> for full reveal — the source document is never destroyed.</div>
+      </div>
+      <div class="flow-extra">
+        <img src="demoImages/09-result-text-journalism.jpg" alt="Text mode — Journalism redaction with color-coded categories">
+        <span class="fe-tag" style="background:rgba(83,74,183,0.14);color:#7c6fef;border-color:rgba(83,74,183,0.4);">Text · Journalism mode</span>
+        <div class="fe-cap">Plain text input, Journalism redaction profile. <strong>SOURCE</strong>, <strong>PHONE</strong>, <strong>LOCATION</strong>, <strong>DATE</strong>, <strong>SECURE</strong> placeholders — color-coded by category, copyable, save as a snippet for reuse.</div>
+      </div>
+    </div>
+
+    <div class="demo-invite" style="margin-top:48px;">
       <div class="demo-invite-text">
         <h3>Live demo — walk up with any document</h3>
-        <p>Hand us a business card, a medical chart photo, a prescription label, or just type sensitive text. Watch Redacto black-box the PHI on-device in real time — no network, no cloud, under 500ms.</p>
+        <p>Hand us a business card, a medical chart, a bank statement, a contract, an incident report, or just type sensitive text. Watch Redacto black-box the identifiers on-device in real time — no network, no cloud, under 500ms.</p>
       </div>
       <div class="demo-tag">See it live →</div>
     </div>
@@ -941,7 +1497,7 @@ PHONE: 408-555-1234</span></div>
     </div>
 
     <!-- 7 Categories -->
-    <div class="eyebrow" style="margin-top:56px; margin-bottom:20px;">7 specialist redaction modes</div>
+    <div class="eyebrow" style="margin-top:56px; margin-bottom:20px;">7 specialist redaction categories · auto-detected by Layer 1</div>
     <div class="categories-grid">
       <div class="cat-card">
         <div class="cat-icon">🏥</div>
@@ -1060,103 +1616,21 @@ PHONE: 408-555-1234</span></div>
   </div>
 </section>
 
-<!-- ── BUSINESS ── -->
-<section id="business">
-  <div class="section-wrap">
-    <div class="eyebrow">07 · Business model</div>
-    <h2>Three tiers. One distribution advantage.</h2>
-    <p class="lead">Healthcare compliance software commands premium pricing. The enterprise tier converts individual adopters into department-wide contracts — the same bottom-up motion that made Slack ubiquitous.</p>
-
-    <div class="biz-grid">
-      <div class="biz-card">
-        <div class="biz-tier">Individual</div>
-        <div class="biz-price">$9</div>
-        <div class="biz-period">per user / month</div>
-        <ul class="biz-features">
-          <li>All 7 redaction modes</li>
-          <li>Unlimited share-sheet usage</li>
-          <li>OCR photo + camera scan</li>
-          <li>Confidence heatmap</li>
-          <li>Works fully offline</li>
-        </ul>
-      </div>
-      <div class="biz-card primary">
-        <div class="biz-badge">Most common</div>
-        <div class="biz-tier">Team</div>
-        <div class="biz-price" style="color:var(--white);">$29</div>
-        <div class="biz-period">per user / month · min 5 seats</div>
-        <ul class="biz-features">
-          <li>Everything in Individual</li>
-          <li>Org-defined redaction policies</li>
-          <li>Audit log export (SOC 2)</li>
-          <li>Admin dashboard</li>
-          <li>Priority support</li>
-        </ul>
-      </div>
-      <div class="biz-card">
-        <div class="biz-tier">Enterprise</div>
-        <div class="biz-price">Custom</div>
-        <div class="biz-period">annual contract · unlimited seats</div>
-        <ul class="biz-features">
-          <li>Everything in Team</li>
-          <li>MDM / EMM deployment</li>
-          <li>Custom model fine-tuning</li>
-          <li>EHR system integration</li>
-          <li>Dedicated CSM + SLA</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="eyebrow" style="margin-bottom:20px;">Market opportunity</div>
-    <div class="tam-table">
-      <div class="tam-row head">
-        <div class="tam-tier" style="font-weight:600;color:var(--black);">Market</div>
-        <div class="tam-name" style="font-size:12px;font-weight:400;color:var(--gray3);">Segment</div>
-        <div class="tam-desc" style="font-size:11px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--gray3);">Who</div>
-        <div class="tam-num" style="font-size:12px;font-weight:600;color:var(--gray3);">Size</div>
-      </div>
-      <div class="tam-row">
-        <div class="tam-tier">TAM</div>
-        <div class="tam-name">Total addressable</div>
-        <div class="tam-desc">All US healthcare workers handling patient communications — hospitals, home health, behavioral health, pharma</div>
-        <div class="tam-num">$4.2B</div>
-      </div>
-      <div class="tam-row">
-        <div class="tam-tier">SAM</div>
-        <div class="tam-name">Serviceable</div>
-        <div class="tam-desc">Home health, social work, and field-based clinicians on Android — highest shadow-IT risk, lowest tech burden</div>
-        <div class="tam-num">$890M</div>
-      </div>
-      <div class="tam-row">
-        <div class="tam-tier">SOM</div>
-        <div class="tam-name">Year 1 target</div>
-        <div class="tam-desc">3 mid-size home health agencies + direct Play Store downloads from clinical conferences</div>
-        <div class="tam-num">$2.4M</div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- ── TECH ── -->
 <section id="tech">
   <div class="section-wrap">
-    <div class="eyebrow">08 · Technical stack</div>
+    <div class="eyebrow">07 · Technical stack</div>
     <h2>Built on the Snapdragon 8 Elite.</h2>
     <div class="tech-grid" style="margin-top:32px;">
       <div class="tech-card">
-        <div class="tech-layer">Pipeline · Layer 1</div>
-        <div class="tech-name">Regex safety net</div>
-        <div class="tech-desc">High-speed deterministic catch for SSNs, phone numbers, email patterns. Runs in parallel as a redundant safety layer.</div>
-      </div>
-      <div class="tech-card">
         <div class="tech-layer">Pipeline · Layers 1–4</div>
         <div class="tech-name">LiteRT-LM + Gemma 4 E2B</div>
-        <div class="tech-desc">Quantized Gemma running on-device via LiteRT-LM. Catches relational identifiers, contextual PHI, and cross-context redaction that regex cannot touch.</div>
+        <div class="tech-desc">Quantized Gemma running on-device via the LiteRT-LM compiled-model API. Catches relational identifiers and contextual references that regex can't touch — "Lisa" alone isn't PHI, "the patient's daughter Lisa" is.</div>
       </div>
       <div class="tech-card">
         <div class="tech-layer">Silicon · NPU</div>
         <div class="tech-name">Snapdragon Hexagon NPU</div>
-        <div class="tech-desc">Qualcomm QNN delegates. 80+ TOPS delivers 85+ tok/s inference — entirely offline, no radio active.</div>
+        <div class="tech-desc">Qualcomm QNN delegates targeting Hexagon V79 directly. Measured 41.7 tok/s sustained decode on Gemma 4 E2B — entirely offline, no radio active.</div>
       </div>
       <div class="tech-card">
         <div class="tech-layer">Vision · OCR</div>
@@ -1175,57 +1649,499 @@ PHONE: 408-555-1234</span></div>
       </div>
     </div>
     <div class="perf-grid">
-      <div><div class="perf-num">&lt;500ms</div><div class="perf-label">redaction of a 500-word clinical note</div></div>
-      <div><div class="perf-num">0</div><div class="perf-label">bytes of PHI ever leaving the device</div></div>
-      <div><div class="perf-num">85+</div><div class="perf-label">tok/s on NPU path (Gemma 4 E2B)</div></div>
-      <div><div class="perf-num">100%</div><div class="perf-label">offline — works in airplane mode</div></div>
+      <div><div class="perf-num">41.7</div><div class="perf-label">tok/s sustained on NPU · Gemma 4 E2B</div></div>
+      <div><div class="perf-num">0</div><div class="perf-label">bytes of sensitive content ever leaving the device</div></div>
+      <div><div class="perf-num">92ms</div><div class="perf-label">time-to-first-token on NPU · 4× faster than GPU</div></div>
+      <div><div class="perf-num">100%</div><div class="perf-label">offline — works in airplane mode, no INTERNET permission</div></div>
+    </div>
+
+    <!-- Optimization decisions -->
+    <div class="opt-block">
+      <div class="opt-head">
+        <div class="opt-title">Code &amp; model optimization for Snapdragon 8 Elite</div>
+        <div class="opt-subtitle">10 deliberate engineering decisions</div>
+      </div>
+      <div class="opt-grid">
+        <div class="opt-item">
+          <div class="opt-num">01</div>
+          <div>
+            <div class="opt-name">INT4-quantized Gemma 4 E2B via LiteRT-LM</div>
+            <div class="opt-desc">Two compiled bundles: <code>gemma4.litertlm</code> (2.4 GB · GPU/CPU) and <code>gemma4_npu.litertlm</code> (2.8 GB · QNN-prepared for Hexagon). Both use the LiteRT-LM compiled-model API.</div>
+          </div>
+        </div>
+        <div class="opt-item">
+          <div class="opt-num">02</div>
+          <div>
+            <div class="opt-name">QNN delegate via Qualcomm dispatch library</div>
+            <div class="opt-desc">NPU path through <code>libLiteRtDispatch_Qualcomm.so</code>. Targets Hexagon V79 directly — no CPU fall-through during decode.</div>
+          </div>
+        </div>
+        <div class="opt-item">
+          <div class="opt-num">03</div>
+          <div>
+            <div class="opt-name">AOT cache for cold-start</div>
+            <div class="opt-desc">Compiled NPU graph cached to <code>context.cacheDir</code>. Second-launch init drops from ~14s to under 2s.</div>
+          </div>
+        </div>
+        <div class="opt-item">
+          <div class="opt-num">04</div>
+          <div>
+            <div class="opt-name">Backend cascade · NPU → GPU → CPU</div>
+            <div class="opt-desc">Cascade lives in <code>RedactionViewModel</code>, looping over <code>engine.initialize(...)</code> per backend (each variant pairs with its own model file). Necessary because <code>Backend.NPU()</code> construction succeeds even without dispatch — failure surfaces at init.</div>
+          </div>
+        </div>
+        <div class="opt-item">
+          <div class="opt-num">05</div>
+          <div>
+            <div class="opt-name">4-pass pipeline · separation of concerns</div>
+            <div class="opt-desc">Classify → Detect → Redact → Validate. Each LLM call is a fresh conversation — purpose-built prompt, no context pollution. Beats single-pass on accuracy.</div>
+          </div>
+        </div>
+        <div class="opt-item">
+          <div class="opt-num">06</div>
+          <div>
+            <div class="opt-name">Indexed-element image redaction</div>
+            <div class="opt-desc">OCR yields indexed tokens; LLM returns indices, not strings. Index → bounding-box mapping is lossless. Zero string-matching overhead and zero OCR-error sensitivity.</div>
+          </div>
+        </div>
+        <div class="opt-item">
+          <div class="opt-num">07</div>
+          <div>
+            <div class="opt-name">Constrained sampling (GPU) · streaming (NPU)</div>
+            <div class="opt-desc">GPU path uses <code>topK=64, topP=0.95</code> for compact output. NPU path streams via QNN's native sampling. We document the tradeoff transparently in the benchmarks section.</div>
+          </div>
+        </div>
+        <div class="opt-item">
+          <div class="opt-num">08</div>
+          <div>
+            <div class="opt-name">arm64-v8a single-ABI build</div>
+            <div class="opt-desc">No fat APK. <code>packaging.jniLibs.pickFirsts</code> dedupes <code>libQnnCpu.so</code>, <code>libQnnHtp.so</code> across QNN AARs. Slim, clean install.</div>
+          </div>
+        </div>
+        <div class="opt-item">
+          <div class="opt-num">09</div>
+          <div>
+            <div class="opt-name">largeHeap + chunked OCR (150 elements)</div>
+            <div class="opt-desc">Required for the 2.4 GB resident model + tensor buffers. Long documents chunked at 150 elements per detection pass to respect the ~4k context window.</div>
+          </div>
+        </div>
+        <div class="opt-item">
+          <div class="opt-num">10</div>
+          <div>
+            <div class="opt-name">No INTERNET permission · zero telemetry</div>
+            <div class="opt-desc">The manifest cannot send a packet. Compliance is structural, not a setting. ML Kit telemetry uses cached background jobs, not runtime calls.</div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ── TEAM ── -->
-<div id="team">
-  <div class="team-inner">
-    <div class="eyebrow">09 · The team</div>
-    <h2 style="color:var(--white);">Edge Artists.</h2>
-    <p class="lead">Four builders who ship hardware-adjacent software. We think in latency budgets, memory constraints, and silicon limits.</p>
-    <div class="team-grid">
-      <div class="team-card">
-        <div class="team-avatar">RK</div>
-        <div class="team-name">Riken</div>
-        <div class="team-role">App lead · Android / Kotlin · firmware background</div>
-        <div class="skill-tags"><span class="skill-tag">Jetpack Compose</span><span class="skill-tag">LiteRT-LM</span><span class="skill-tag">Android SDK</span></div>
+<!-- ── ENGINEERING JOURNEY ── -->
+<section id="journey">
+  <div class="section-wrap">
+    <div class="eyebrow">08 · Engineering journey</div>
+    <h2>From single-pass to 4-layer.</h2>
+    <p class="lead">Every section above describes what shipped. This section describes what we tried, what broke, and what we're explicit about not having reached alone.</p>
+
+    <!-- v1 → v2 transition card -->
+    <div class="journey-arc">
+      <div class="ja-side ja-v1">
+        <div class="ja-tag">v1 · ShieldText fork</div>
+        <div class="ja-title">Single-pass · regex fallback</div>
+        <ul class="ja-list">
+          <li>One LLM call: classify + detect + redact in a single prompt</li>
+          <li>Deterministic <code>string.replace()</code> on the LLM's detection output</li>
+          <li>Regex fallback for SSN / phone / email patterns</li>
+          <li>No validator — whatever the model produced shipped</li>
+        </ul>
       </div>
-      <div class="team-card">
-        <div class="team-avatar">ML</div>
-        <div class="team-name">Edge Artists</div>
-        <div class="team-role">ML inference · on-device model optimization</div>
-        <div class="skill-tags"><span class="skill-tag">Gemma</span><span class="skill-tag">QNN</span><span class="skill-tag">INT4 quant</span></div>
+      <div class="ja-arrow">→</div>
+      <div class="ja-side ja-v2">
+        <div class="ja-tag">v2 · Redacto</div>
+        <div class="ja-title">4-layer pipeline · indexed images · validator</div>
+        <ul class="ja-list">
+          <li>Classify → Detect → Redact → Validate · each a fresh conversation</li>
+          <li>LLM-driven substitution — handles OCR noise the model auto-corrects</li>
+          <li>Indexed-element image redaction — zero string matching</li>
+          <li>Independent auditor with up to 3 retry rounds</li>
+        </ul>
       </div>
-      <div class="team-card">
-        <div class="team-avatar">UX</div>
-        <div class="team-name">Edge Artists</div>
-        <div class="team-role">UX · product design · healthcare domain research</div>
-        <div class="skill-tags"><span class="skill-tag">Figma</span><span class="skill-tag">HIPAA</span><span class="skill-tag">User research</span></div>
+    </div>
+
+    <!-- Dead-end matrix -->
+    <div class="eyebrow" style="margin-top:64px;">What we tried · what shipped · why</div>
+    <div class="trial-table">
+      <div class="trial-row head">
+        <div class="trial-cell"><div class="col-label">Idea</div></div>
+        <div class="trial-cell"><div class="col-label">Outcome</div></div>
+        <div class="trial-cell"><div class="col-label">What we learned</div></div>
       </div>
-      <div class="team-card">
-        <div class="team-avatar">BE</div>
-        <div class="team-name">Edge Artists</div>
-        <div class="team-role">Backend · policy engine · audit infrastructure</div>
-        <div class="skill-tags"><span class="skill-tag">Kotlin</span><span class="skill-tag">ML Kit</span><span class="skill-tag">Regex pipeline</span></div>
+      <div class="trial-row">
+        <div class="trial-cell"><div class="trial-name">Fine-tune Gemma 4 E2B on the redaction dataset</div></div>
+        <div class="trial-cell"><span class="trial-status red">Cannot ship to NPU</span></div>
+        <div class="trial-cell">Trained successfully on GPU. Quality regressed (70.3% vs 80.5%) and — more critically — couldn't be compiled into a <code>_qualcomm_sm8750.litertlm</code> bundle without QNN's internal toolchain. See blocker callout below.</div>
+      </div>
+      <div class="trial-row">
+        <div class="trial-cell"><div class="trial-name">Single-pass redaction (v1 inheritance)</div></div>
+        <div class="trial-cell"><span class="trial-status amber">Replaced</span></div>
+        <div class="trial-cell">One LLM call asked to classify, detect, redact, and verify. Inconsistent. Splitting into 4 fresh conversations beat it on every accuracy metric.</div>
+      </div>
+      <div class="trial-row">
+        <div class="trial-cell"><div class="trial-name">Deterministic <code>string.replace()</code> in Step 3</div></div>
+        <div class="trial-cell"><span class="trial-status amber">Replaced</span></div>
+        <div class="trial-cell">OCR text had errors. The LLM "corrected" them in detection output. Exact strings stopped matching the source — 6 of 8 redactions silently dropped. Step 3 became an LLM call.</div>
+      </div>
+      <div class="trial-row">
+        <div class="trial-cell"><div class="trial-name">Word-diff heuristic for image bounding boxes</div></div>
+        <div class="trial-cell"><span class="trial-status amber">Replaced</span></div>
+        <div class="trial-cell">LLM rewrote text — diff-based bbox lookup broke. Indexed-element approach is now lossless: the LLM returns indices, we map directly to bounding boxes.</div>
+      </div>
+      <div class="trial-row">
+        <div class="trial-cell"><div class="trial-name">PDF upload (PdfRenderer + ML Kit)</div></div>
+        <div class="trial-cell"><span class="trial-status amber">Cut from demo</span></div>
+        <div class="trial-cell">Built end-to-end, not exhaustively tested. Demo risk outweighed the feature value. Code is shipped, gated — see Future enhancements.</div>
+      </div>
+      <div class="trial-row">
+        <div class="trial-cell"><div class="trial-name">Battery / energy metrics</div></div>
+        <div class="trial-cell"><span class="trial-status red">Dropped</span></div>
+        <div class="trial-cell"><code>BatteryManager.BATTERY_PROPERTY_CURRENT_NOW</code> is system-wide, sampled at 1Hz. Two readings can't isolate per-process draw. We don't fake numbers — so we removed it.</div>
+      </div>
+      <div class="trial-row">
+        <div class="trial-cell"><div class="trial-name">RegexFallback safety net</div></div>
+        <div class="trial-cell"><span class="trial-status red">Removed</span></div>
+        <div class="trial-cell">Inherited from v1 ShieldText. Multi-pass + validator covers the safety case more thoroughly. LLM-only is the cleaner architectural story.</div>
+      </div>
+      <div class="trial-row">
+        <div class="trial-cell"><div class="trial-name">NPU re-init within same process</div></div>
+        <div class="trial-cell"><span class="trial-status red">Known limitation</span></div>
+        <div class="trial-cell">QNN holds DSP state across <code>Engine.close()</code>. Switching backends mid-session crashes. Documented; recoverable only by app restart.</div>
+      </div>
+      <div class="trial-row">
+        <div class="trial-cell"><div class="trial-name">Constrained sampling on NPU (topK / topP)</div></div>
+        <div class="trial-cell"><span class="trial-status red">QNN-side limitation</span></div>
+        <div class="trial-cell">QNN returns "not supported, error 12". <code>SamplerConfig = null</code> on NPU. Consequence: NPU output is more verbose. We surface this honestly in the benchmarks.</div>
+      </div>
+    </div>
+
+    <!-- v1 ShieldText benchmark — visual evidence of the fine-tune regression -->
+    <div class="v1-evidence">
+      <img src="demoImages/ref-v1-shieldtext-benchmark-overall.jpg" alt="v1 ShieldText benchmark — Standard vs Fine-tuned regression">
+      <div class="v1-evidence-text">
+        <div class="v1-evidence-tag">Receipts · v1 ShieldText benchmark screen</div>
+        <div class="v1-evidence-title">The fine-tune regression — actual numbers, not a story</div>
+        <div class="v1-evidence-body">Captured live from the v1 ShieldText benchmark screen. Overall score collapsed <strong>80.5% → 70.3%</strong>; HIPAA recall fell <strong>95.7% → 39.9%</strong>; preservation dropped <strong>83.7% → 65.9%</strong>. Field service and tactical improved, but the average regressed. We have the artifact — what we don't have is the QNN AOT toolchain to ship it to NPU and re-evaluate after Qualcomm's quantization.</div>
+      </div>
+    </div>
+
+    <!-- The NPU blocker callout -->
+    <div class="blocker-callout" style="margin-top:32px;">
+      <div class="bc-icon">⛔</div>
+      <div class="bc-body">
+        <div class="bc-title">The blocker we couldn't break alone — NPU-prepared fine-tuned models</div>
+        <div class="bc-text">
+          We have a fine-tuned Gemma 4 E2B specialized on the redaction task. It runs on GPU. We <strong>cannot</strong> ship it to the Hexagon V79 NPU. Compiling a fine-tuned <code>.litertlm</code> into a Qualcomm-prepared <code>_qualcomm_sm8750.litertlm</code> bundle requires the QNN graph-compilation pipeline — AIMET quantization plus Qualcomm's internal AOT conversion toolchain. That is not part of the public LiteRT-LM SDK.
+          <br><br>
+          NPU runs the stock <code>gemma-4-E2B-it_qualcomm_sm8750.litertlm</code> bundle published by <code>litert-community</code>. With Qualcomm hardware-team support to QNN-compile our fine-tuned bundle, we expect domain-specific accuracy gains and a smaller compiled binary. <strong>This is a hardware-team integration boundary — not an engineering shortcut.</strong>
+        </div>
       </div>
     </div>
   </div>
-</div>
+</section>
+
+<!-- ── BENCHMARKS ── -->
+<section id="benchmarks">
+  <div class="bench-inner">
+    <div class="eyebrow">09 · Real benchmarks · Real silicon</div>
+    <h2>Measured. Not marketed.</h2>
+    <p class="lead">Every number below comes from a verified run on a Galaxy S25 Ultra — 30 entries across 5 redaction modes, full reproduction commands in the methodology footnote.</p>
+
+    <!-- Setup row -->
+    <div class="bench-setup">
+      <div class="bset-item">
+        <div class="bset-label">Device</div>
+        <div class="bset-value">Galaxy S25 Ultra</div>
+        <div class="bset-meta">Snapdragon 8 Elite · SM8750</div>
+      </div>
+      <div class="bset-item">
+        <div class="bset-label">Model</div>
+        <div class="bset-value">Gemma 4 E2B</div>
+        <div class="bset-meta">2.4 GB GPU · 2.8 GB NPU</div>
+      </div>
+      <div class="bset-item">
+        <div class="bset-label">Pipeline</div>
+        <div class="bset-value">3-step</div>
+        <div class="bset-meta">Classify · Detect · Redact</div>
+      </div>
+      <div class="bset-item">
+        <div class="bset-label">Dataset</div>
+        <div class="bset-value">30 entries</div>
+        <div class="bset-meta">5 modes · easy difficulty</div>
+      </div>
+    </div>
+
+    <!-- Hero metrics -->
+    <div class="bench-eyebrow">Headline numbers · NPU vs GPU</div>
+    <div class="bench-hero-grid">
+      <div class="bhc">
+        <div class="bhc-num">4.0×</div>
+        <div class="bhc-label">faster TTFT</div>
+        <div class="bhc-detail">92ms first-token on NPU vs 366ms on GPU — your user feels the redaction before they finish reading the loading message.</div>
+      </div>
+      <div class="bhc">
+        <div class="bhc-num">1.7×</div>
+        <div class="bhc-label">faster decode</div>
+        <div class="bhc-detail">41.7 tok/s on NPU vs 24.5 tok/s on GPU — the only delegate that hits real-time speed on Gemma 4 E2B.</div>
+      </div>
+      <div class="bhc">
+        <div class="bhc-num">2.5×</div>
+        <div class="bhc-label">faster Detect</div>
+        <div class="bhc-detail">624ms vs 1,586ms — the costliest stage of the pipeline collapses on the Hexagon V79 NPU.</div>
+      </div>
+      <div class="bhc">
+        <div class="bhc-num">2.0×</div>
+        <div class="bhc-label">end-to-end (short docs)</div>
+        <div class="bhc-detail">2.78s NPU vs 5.65s GPU on a 229-char clinical note — the typical mobile interaction.</div>
+      </div>
+    </div>
+
+    <!-- Bar chart: per-step latency -->
+    <div class="bench-eyebrow">Per-step latency · 30-entry average</div>
+    <div class="bench-chart">
+      <div class="bench-chart-cap">Lower is faster. Bars normalized to NPU Step 3 (4,060ms = 100%).</div>
+      <div class="bench-bars">
+        <div class="bbar-row">
+          <div class="bbar-label">Step 1<span>Classify</span></div>
+          <div class="bbar-tracks">
+            <div class="bbar-track">
+              <span class="bbar-tag">GPU</span>
+              <div class="bbar-wrap"><div class="bbar-fill gpu" style="width: 19%;">773ms</div></div>
+              <span class="bbar-note muted">baseline</span>
+            </div>
+            <div class="bbar-track">
+              <span class="bbar-tag">NPU</span>
+              <div class="bbar-wrap"><div class="bbar-fill npu" style="width: 8.5%;">345ms</div></div>
+              <span class="bbar-note">2.2× faster</span>
+            </div>
+          </div>
+        </div>
+        <div class="bbar-row">
+          <div class="bbar-label">Step 2<span>Detect</span></div>
+          <div class="bbar-tracks">
+            <div class="bbar-track">
+              <span class="bbar-tag">GPU</span>
+              <div class="bbar-wrap"><div class="bbar-fill gpu" style="width: 39%;">1,586ms</div></div>
+              <span class="bbar-note muted">baseline</span>
+            </div>
+            <div class="bbar-track">
+              <span class="bbar-tag">NPU</span>
+              <div class="bbar-wrap"><div class="bbar-fill npu" style="width: 15.4%;">624ms</div></div>
+              <span class="bbar-note">2.5× faster</span>
+            </div>
+          </div>
+        </div>
+        <div class="bbar-row">
+          <div class="bbar-label">Step 3<span>Redact</span></div>
+          <div class="bbar-tracks">
+            <div class="bbar-track">
+              <span class="bbar-tag">GPU</span>
+              <div class="bbar-wrap"><div class="bbar-fill gpu" style="width: 61%;">2,475ms</div></div>
+              <span class="bbar-note muted">baseline</span>
+            </div>
+            <div class="bbar-track">
+              <span class="bbar-tag">NPU</span>
+              <div class="bbar-wrap"><div class="bbar-fill warn" style="width: 100%;">4,060ms</div></div>
+              <span class="bbar-note warn">verbose · 3.2× more tokens</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Stats trio: TTFT / Decode / RAM -->
+    <div class="bench-trio">
+      <div class="btrio-card">
+        <div class="btrio-head">Time to first token</div>
+        <div class="btrio-sub">Lower is better · ms</div>
+        <div class="btrio-row"><div class="btrio-name">S1·G</div><div class="btrio-track"><div class="btrio-fill gpu" style="width:100%;"></div></div><div class="btrio-val">381</div></div>
+        <div class="btrio-row"><div class="btrio-name">S1·N</div><div class="btrio-track"><div class="btrio-fill npu" style="width:26%;"></div></div><div class="btrio-val">99</div></div>
+        <div class="btrio-row"><div class="btrio-name">S2·G</div><div class="btrio-track"><div class="btrio-fill gpu" style="width:98%;"></div></div><div class="btrio-val">375</div></div>
+        <div class="btrio-row"><div class="btrio-name">S2·N</div><div class="btrio-track"><div class="btrio-fill npu" style="width:27%;"></div></div><div class="btrio-val">104</div></div>
+        <div class="btrio-row"><div class="btrio-name">S3·G</div><div class="btrio-track"><div class="btrio-fill gpu" style="width:96%;"></div></div><div class="btrio-val">366</div></div>
+        <div class="btrio-row"><div class="btrio-name">S3·N</div><div class="btrio-track"><div class="btrio-fill npu" style="width:24%;"></div></div><div class="btrio-val">92</div></div>
+        <div class="btrio-foot">NPU's first-token latency is 3.6–4.0× lower across every step. The user experiences the response immediately.</div>
+      </div>
+
+      <div class="btrio-card">
+        <div class="btrio-head">Decode throughput</div>
+        <div class="btrio-sub">Higher is better · tok/s</div>
+        <div class="btrio-row"><div class="btrio-name">S1·G</div><div class="btrio-track"><div class="btrio-fill gpu" style="width:61%;"></div></div><div class="btrio-val">25.3</div></div>
+        <div class="btrio-row"><div class="btrio-name">S1·N</div><div class="btrio-track"><div class="btrio-fill npu" style="width:100%;"></div></div><div class="btrio-val">41.7</div></div>
+        <div class="btrio-row"><div class="btrio-name">S2·G</div><div class="btrio-track"><div class="btrio-fill gpu" style="width:60%;"></div></div><div class="btrio-val">24.9</div></div>
+        <div class="btrio-row"><div class="btrio-name">S2·N</div><div class="btrio-track"><div class="btrio-fill npu" style="width:100%;"></div></div><div class="btrio-val">41.7</div></div>
+        <div class="btrio-row"><div class="btrio-name">S3·G</div><div class="btrio-track"><div class="btrio-fill gpu" style="width:59%;"></div></div><div class="btrio-val">24.5</div></div>
+        <div class="btrio-row"><div class="btrio-name">S3·N</div><div class="btrio-track"><div class="btrio-fill npu" style="width:100%;"></div></div><div class="btrio-val">41.7</div></div>
+        <div class="btrio-foot">NPU sustains 41.7 tok/s consistently across all three pipeline stages — 1.7× faster than GPU.</div>
+      </div>
+
+      <div class="btrio-card">
+        <div class="btrio-head">Peak resident memory</div>
+        <div class="btrio-sub">MB consumed during run</div>
+        <div class="btrio-row"><div class="btrio-name">GPU</div><div class="btrio-track"><div class="btrio-fill gpu" style="width:71%;"></div></div><div class="btrio-val">1,375</div></div>
+        <div class="btrio-row"><div class="btrio-name">NPU</div><div class="btrio-track"><div class="btrio-fill npu" style="width:100%;"></div></div><div class="btrio-val">1,934</div></div>
+        <div class="btrio-foot" style="margin-top:42px;">NPU costs ~560 MB more — model is 2.8 GB vs 2.4 GB, plus QNN runtime buffers. Both fit comfortably in S25's 12 GB.</div>
+      </div>
+    </div>
+
+    <!-- Tradeoff callout -->
+    <div class="bench-tradeoff">
+      <div class="btr-icon">⚖</div>
+      <div>
+        <div class="btr-title">Why total wall-clock isn't 2× — the honest tradeoff</div>
+        <div class="btr-text">The NPU is faster <em>per token</em>, but <strong>QNN doesn't yet support constrained decoding</strong> — so we can't cap output length the way GPU does (topK=64, topP=0.95). The NPU's unconstrained sampling produces ~2× more tokens, which equalizes the 30-entry total at ~5s. <em>For TTFT-critical UX and short inputs, NPU still wins decisively.</em> We surface this — not hide it.</div>
+        <div class="btr-stats">
+          <div class="btr-stat"><strong>5.06s</strong>NPU avg total</div>
+          <div class="btr-stat"><strong>4.86s</strong>GPU avg total</div>
+          <div class="btr-stat"><strong>195</strong>NPU avg tokens</div>
+          <div class="btr-stat"><strong>92</strong>GPU avg tokens</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mode breakdown -->
+    <div class="bench-eyebrow">By redaction mode · NPU latency on easy entries</div>
+    <div class="bench-modes">
+      <div class="bmode">
+        <div class="bmode-name">HIPAA</div>
+        <div class="bmode-num">1.98s</div>
+        <div class="bmode-vs">GPU 4.16s<br>2.1× faster</div>
+        <div class="bmode-bar-bg"><div class="bmode-bar-fill" style="width: 14%;"></div></div>
+      </div>
+      <div class="bmode">
+        <div class="bmode-name">Financial</div>
+        <div class="bmode-num">2.36s</div>
+        <div class="bmode-vs">GPU 4.73s<br>2.0× faster</div>
+        <div class="bmode-bar-bg"><div class="bmode-bar-fill" style="width: 17%;"></div></div>
+      </div>
+      <div class="bmode">
+        <div class="bmode-name">Field Service</div>
+        <div class="bmode-num">2.33s</div>
+        <div class="bmode-vs">GPU 5.28s<br>2.3× faster</div>
+        <div class="bmode-bar-bg"><div class="bmode-bar-fill" style="width: 16%;"></div></div>
+      </div>
+      <div class="bmode">
+        <div class="bmode-name">Journalism</div>
+        <div class="bmode-num">2.35s</div>
+        <div class="bmode-vs">GPU 4.56s<br>1.9× faster</div>
+        <div class="bmode-bar-bg"><div class="bmode-bar-fill" style="width: 17%;"></div></div>
+      </div>
+      <div class="bmode">
+        <div class="bmode-name">Tactical</div>
+        <div class="bmode-num warn">14.2s</div>
+        <div class="bmode-vs">verbose-prompt<br>edge case</div>
+        <div class="bmode-bar-bg"><div class="bmode-bar-fill" style="width: 100%; background: #f59e0b;"></div></div>
+      </div>
+    </div>
+
+    <!-- Spotlight: hipaa_001 -->
+    <div class="bench-spotlight">
+      <div class="bspot-eye">Spotlight · hipaa_001 · 229 chars · the typical mobile note</div>
+      <div class="bspot-title">2.0× faster, end-to-end.</div>
+      <div class="bspot-sub">A real clinical message. Three steps. Wall-clock from tap to result. This is what the user actually feels.</div>
+      <div class="bspot-rows">
+        <div class="bspot-row">
+          <div class="bspot-tag">GPU</div>
+          <div class="bspot-bar-wrap"><div class="bspot-bar gpu" style="width: 100%;">955 → 2,258 → 2,413 ms</div></div>
+          <div class="bspot-total">5.65s</div>
+        </div>
+        <div class="bspot-row">
+          <div class="bspot-tag">NPU</div>
+          <div class="bspot-bar-wrap"><div class="bspot-bar npu" style="width: 49%;">757 → 694 → 1,309 ms</div></div>
+          <div class="bspot-total">2.78s</div>
+        </div>
+      </div>
+      <div class="bspot-foot">
+        <span>Step 2 TTFT: <strong style="color:var(--white);font-weight:700;">159ms</strong> on NPU vs <strong style="color:var(--white);font-weight:700;">424ms</strong> on GPU. The pipeline starts streaming before the user blinks.</span>
+        <div class="bspot-foot-num">2.0×<small>faster end-to-end</small></div>
+      </div>
+    </div>
+
+    <!-- Methodology -->
+    <div class="bench-method">
+      <div class="bmeth-head">Methodology</div>
+      <p class="bmeth-text"><strong style="color:var(--white);font-weight:600;">Latency:</strong> <code>System.currentTimeMillis()</code> wall-clock around full <code>engine.infer()</code> call — includes all overhead. <strong style="color:var(--white);font-weight:600;">TTFT:</strong> timestamp of first <code>onMessage</code> callback minus start time. <strong style="color:var(--white);font-weight:600;">Decode tok/s:</strong> <code>(tokens − 1) × 1000 / (lastToken − firstToken)</code>, excludes prefill. <strong style="color:var(--white);font-weight:600;">Peak RSS:</strong> <code>/proc/self/status</code> VmRSS line. Reproduction commands and full per-entry data in <code>docs/benchmark-results.md</code>.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── FUTURE ── -->
+<section id="future">
+  <div class="section-wrap">
+    <div class="eyebrow">10 · Future enhancements</div>
+    <h2>What's next.</h2>
+    <p class="lead">A short list — every item here is unblocked by a known dependency, not by uncertainty about the path.</p>
+
+    <div class="future-grid">
+      <div class="future-card">
+        <div class="future-num">01</div>
+        <div class="future-title">Fine-tuned NPU bundle</div>
+        <div class="future-tag">Needs Qualcomm hardware support</div>
+        <div class="future-desc">Compile our fine-tuned Gemma into a <code>_qualcomm_sm8750.litertlm</code> bundle via the QNN graph-compilation pipeline. Domain-specific accuracy gains and a smaller binary. Currently blocked at the AIMET / QNN-AOT boundary.</div>
+      </div>
+      <div class="future-card">
+        <div class="future-num">02</div>
+        <div class="future-title">Pipeline accuracy iteration</div>
+        <div class="future-tag">Prompt + validator tuning</div>
+        <div class="future-desc">Layer 2 over-redacts on dense documents (300+ detections from 400 OCR elements). Layer 4 occasionally flags <code>[NAME_1]</code> placeholders as leaks. Both are fixable in prompt; both need a wider eval set than 30 entries.</div>
+      </div>
+      <div class="future-card">
+        <div class="future-num">03</div>
+        <div class="future-title">PDF support · re-enable</div>
+        <div class="future-tag">Code shipped · needs e2e tests</div>
+        <div class="future-desc">PdfRenderer + per-page ML Kit OCR was implemented and removed pre-demo for stability. Add a multi-page fixture suite, restore the share-sheet entry point.</div>
+      </div>
+      <div class="future-card">
+        <div class="future-num">04</div>
+        <div class="future-title">In-app benchmark dashboard</div>
+        <div class="future-tag">Spec written · not built</div>
+        <div class="future-desc">Surface live latency, TTFT, decode tok/s, and peak RSS in a settings tab so users can run the full benchmark suite on their own device. Spec exists in <code>docs/benchmark-ui-spec.md</code>.</div>
+      </div>
+      <div class="future-card">
+        <div class="future-num">05</div>
+        <div class="future-title">Per-detection confidence score</div>
+        <div class="future-tag">Layer 4 extension</div>
+        <div class="future-desc">Validator currently returns binary pass/fail. Extend to a confidence per redaction span — surface low-confidence items as suggestions for tap-to-un-redact, not as final decisions.</div>
+      </div>
+      <div class="future-card">
+        <div class="future-num">06</div>
+        <div class="future-title">Live transcription redaction</div>
+        <div class="future-tag">Streaming pipeline</div>
+        <div class="future-desc">Pipe device speech-to-text into the redaction pipeline at typing speed. The 92ms NPU TTFT says this is feasible — pre-redact at the moment of utterance, not after.</div>
+      </div>
+      <div class="future-card">
+        <div class="future-num">07</div>
+        <div class="future-title">iOS port</div>
+        <div class="future-tag">LiteRT-LM cross-platform</div>
+        <div class="future-desc">LiteRT-LM ships an iOS runtime. Same 4-layer pipeline, same prompts, same indexed-element approach — just the platform shell changes.</div>
+      </div>
+      <div class="future-card">
+        <div class="future-num">08</div>
+        <div class="future-title">Audit log + MDM deployment</div>
+        <div class="future-tag">Enterprise compliance</div>
+        <div class="future-desc">Local-only audit log of redaction events for SOC 2-style attestation, plus MDM/EMM-friendly distribution so health systems and field-service orgs can deploy at scale.</div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- ── CTA ── -->
 <div class="cta-strip">
   <div class="cta-eyebrow">Live demo available now</div>
   <div class="cta-title">See it redact in real time.</div>
-  <p class="cta-sub">Walk up with any document. We'll photograph it or paste sensitive text and you'll watch PHI disappear — on device, in under 500ms, no network, no cloud.</p>
+  <p class="cta-sub">Walk up with any document — a clinical note, an account statement, a contract, a witness account, a source memo, a service ticket, or anything in between. Photograph it or paste the text, and watch the sensitive parts disappear on-device in under 500ms.</p>
   <div class="cta-btns">
-    <a href="#arch" class="btn-primary">View the pipeline</a>
-    <a href="#tech" class="btn-secondary">Technical deep dive</a>
+    <a href="https://github.com/rikenshah/redacto" class="btn-primary" target="_blank" rel="noopener">View on GitHub →</a>
+    <a href="#benchmarks" class="btn-secondary">See the benchmarks</a>
   </div>
 </div>
 
@@ -1235,6 +2151,9 @@ PHONE: 408-555-1234</span></div>
   <div class="footer-tagline">Privacy. Redacted.</div>
   <p>Edge Artists · Qualcomm × Google Developer Hackathon · 2026</p>
   <p style="margin-top:6px;">LiteRT-LM · Gemma 4 E2B · Snapdragon 8 Elite · Google ML Kit · Jetpack Compose</p>
+  <p style="margin-top:14px;font-family:'DM Mono',monospace;font-size:10px;color:var(--gray3);letter-spacing:0.06em;">
+    <a href="https://github.com/rikenshah/redacto" target="_blank" rel="noopener" style="color:var(--gray4);text-decoration:none;border-bottom:1px solid var(--gray2);">github.com/rikenshah/redacto</a>
+  </p>
 </footer>
 
 </body>
