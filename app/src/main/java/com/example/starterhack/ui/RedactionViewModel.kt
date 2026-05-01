@@ -119,10 +119,14 @@ class RedactionViewModel(
                 if (!file.exists() || file.length() == 0L) continue
                 val result = runCatching { engine.initialize(file.absolutePath, variant.backend) }
                 if (result.isSuccess) {
-                    // DO NOT persist a fallback variant: the user's requested choice stays on
-                    // disk so the next launch retries NPU. The active backend for THIS session
-                    // is reflected via engine.activeBackend in the live HUD.
                     _activeBackend.value = engine.activeBackend
+                    if (engine.activeBackend != requested.backend.name) {
+                        android.util.Log.w("RedactionViewModel",
+                            "Requested ${requested.backend.name} but fell back to ${engine.activeBackend}")
+                    }
+                    _selectedVariant.value = ModelVariant.entries.first {
+                        it.backend.name == engine.activeBackend
+                    }
                     _uiState.value = RedactionUiState.Idle
                     drainPendingTask()
                     return@launch
@@ -136,10 +140,16 @@ class RedactionViewModel(
     fun selectModelVariant(variant: ModelVariant) {
         if (variant == _selectedVariant.value) return
         _selectedVariant.value = variant
-        _activeBackend.value = variant.backend.name  // show target chip while re-initializing
+        _activeBackend.value = variant.backend.name
         prefs.edit().putString("selected_variant", variant.name).apply()
-        engine.close()
-        checkModelAndInitialize()
+        _uiState.value = RedactionUiState.Initializing
+        viewModelScope.launch {
+            kotlinx.coroutines.withContext(kotlinx.coroutines.Dispatchers.IO) {
+                engine.close()
+                Thread.sleep(3000)
+            }
+            checkModelAndInitialize()
+        }
     }
 
     fun selectMode(mode: RedactionMode) {
@@ -152,21 +162,21 @@ class RedactionViewModel(
 
     fun redactText(text: String) {
         if (text.isBlank()) return
+        _uiState.value = RedactionUiState.Idle
         if (!engine.isReady) {
-            // Engine still loading — queue the request so the user can move on to RESULT
-            // and see a spinner. drainPendingTask() runs it once init succeeds.
             pendingTask = PendingTask.Text(text)
             _uiState.value = RedactionUiState.Loading
             return
         }
-        // Set Loading synchronously so any caller that immediately navigates to RESULT
-        // sees Loading, not whatever stale state was there (Idle/Success/Error).
         _uiState.value = RedactionUiState.Loading
         viewModelScope.launch {
             runCatching { pipeline.process(text.trim()) }
                 .onSuccess { result ->
+                    val m = engine.lastMetrics
                     _uiState.value = buildSuccess(
-                        text.trim(), result.redactedText, engine.lastMetrics
+                        text.trim(), result.redactedText, m?.copy(
+                            latencyMs = result.totalLatencyMs,
+                        )
                     )
                 }
                 .onFailure { _uiState.value = RedactionUiState.Error(it.message ?: "Redaction failed") }

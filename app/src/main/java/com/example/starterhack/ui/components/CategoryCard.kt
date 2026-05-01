@@ -20,7 +20,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -40,14 +39,11 @@ fun CategoryCard(
     useBadge: Boolean = false,
 ) {
     val (textColor, bgColor) = category.pillColors()
-    val hasDocuments = docCount > 0
-    val tileAlpha = if (hasDocuments) 1f else 0.4f
 
     Surface(
         modifier = modifier
             .fillMaxWidth()
             .aspectRatio(1f)
-            .alpha(tileAlpha)
             .clickable(onClick = onClick),
         shape = RoundedCornerShape(12.dp),
         color = CardWhite,
@@ -76,6 +72,11 @@ fun CategoryCard(
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis,
                 textAlign = TextAlign.Center,
+            )
+            Text(
+                text = "$docCount docs",
+                style = MaterialTheme.typography.labelSmall,
+                color = Color(0xFF888888),
             )
         }
     }

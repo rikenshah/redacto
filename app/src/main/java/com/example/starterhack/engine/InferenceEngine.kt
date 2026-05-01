@@ -145,23 +145,25 @@ class InferenceEngine(private val context: Context) : LlmEngine {
                     val llmDeferred = async {
                         val contents = Contents.of(listOf(Content.Text(SystemPrompts.build(mode, text))))
                         val sb = StringBuilder()
-                        suspendCancellableCoroutine<Unit> { cont ->
-                            conversation.sendMessageAsync(
-                                contents,
-                                object : MessageCallback {
-                                    override fun onMessage(message: Message) {
-                                        val now = System.currentTimeMillis()
-                                        if (tokenCount == 0) firstTokenTimeMs = now
-                                        lastTokenTimeMs = now
-                                        sb.append(message.toString())
-                                        tokenCount++
-                                    }
-                                    override fun onDone() { cont.resume(Unit) }
-                                    override fun onError(throwable: Throwable) { cont.resumeWithException(throwable) }
-                                },
-                                emptyMap(),
-                            )
-                            cont.invokeOnCancellation { runCatching { conversation.cancelProcess() } }
+                        kotlinx.coroutines.withTimeout(60_000L) {
+                            suspendCancellableCoroutine<Unit> { cont ->
+                                conversation.sendMessageAsync(
+                                    contents,
+                                    object : MessageCallback {
+                                        override fun onMessage(message: Message) {
+                                            val now = System.currentTimeMillis()
+                                            if (tokenCount == 0) firstTokenTimeMs = now
+                                            lastTokenTimeMs = now
+                                            sb.append(message.toString())
+                                            tokenCount++
+                                        }
+                                        override fun onDone() { cont.resume(Unit) }
+                                        override fun onError(throwable: Throwable) { cont.resumeWithException(throwable) }
+                                    },
+                                    emptyMap(),
+                                )
+                                cont.invokeOnCancellation { runCatching { conversation.cancelProcess() } }
+                            }
                         }
                         sb.toString().trim()
                     }
@@ -221,23 +223,25 @@ class InferenceEngine(private val context: Context) : LlmEngine {
             try {
                 val contents = Contents.of(listOf(Content.Text(prompt)))
                 val sb = StringBuilder()
-                suspendCancellableCoroutine<Unit> { cont ->
-                    conversation.sendMessageAsync(
-                        contents,
-                        object : MessageCallback {
-                            override fun onMessage(message: Message) {
-                                val now = System.currentTimeMillis()
-                                if (tokenCount == 0) firstTokenTimeMs = now
-                                lastTokenTimeMs = now
-                                sb.append(message.toString())
-                                tokenCount++
-                            }
-                            override fun onDone() { cont.resume(Unit) }
-                            override fun onError(throwable: Throwable) { cont.resumeWithException(throwable) }
-                        },
-                        emptyMap(),
-                    )
-                    cont.invokeOnCancellation { runCatching { conversation.cancelProcess() } }
+                kotlinx.coroutines.withTimeout(60_000L) {
+                    suspendCancellableCoroutine<Unit> { cont ->
+                        conversation.sendMessageAsync(
+                            contents,
+                            object : MessageCallback {
+                                override fun onMessage(message: Message) {
+                                    val now = System.currentTimeMillis()
+                                    if (tokenCount == 0) firstTokenTimeMs = now
+                                    lastTokenTimeMs = now
+                                    sb.append(message.toString())
+                                    tokenCount++
+                                }
+                                override fun onDone() { cont.resume(Unit) }
+                                override fun onError(throwable: Throwable) { cont.resumeWithException(throwable) }
+                            },
+                            emptyMap(),
+                        )
+                        cont.invokeOnCancellation { runCatching { conversation.cancelProcess() } }
+                    }
                 }
 
                 val endTime = System.currentTimeMillis()
@@ -314,8 +318,17 @@ class InferenceEngine(private val context: Context) : LlmEngine {
     }.getOrElse { 0f }
 
     override fun close() {
-        engine?.close()
+        val e = engine
         engine = null
         isReady = false
+        isNpu = false
+        lastMetrics = null
+        if (e != null) {
+            Log.i("InferenceEngine", "Closing engine, releasing native resources...")
+            e.close()
+            System.gc()
+            Runtime.getRuntime().gc()
+            Log.i("InferenceEngine", "Engine closed, GC requested")
+        }
     }
 }

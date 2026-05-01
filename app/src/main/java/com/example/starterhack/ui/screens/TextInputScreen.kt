@@ -66,11 +66,19 @@ fun TextInputScreen(
     val snackbarHostState = remember { SnackbarHostState() }
     val clipboard = LocalClipboardManager.current
 
-    val isLoading = uiState is RedactionUiState.Loading || uiState is RedactionUiState.Initializing
+    val isLoading = uiState is RedactionUiState.Loading ||
+        uiState is RedactionUiState.Initializing ||
+        uiState is RedactionUiState.PipelineProgress
 
     LaunchedEffect(uiState) {
         when (val state = uiState) {
-            is RedactionUiState.Success -> navController.navigate(Routes.RESULT)
+            is RedactionUiState.Loading,
+            is RedactionUiState.PipelineProgress -> navController.navigate(Routes.RESULT) {
+                launchSingleTop = true
+            }
+            is RedactionUiState.Success -> navController.navigate(Routes.RESULT) {
+                launchSingleTop = true
+            }
             is RedactionUiState.Error -> snackbarHostState.showSnackbar(state.message)
             else -> {}
         }
